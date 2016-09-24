@@ -1,0 +1,60 @@
+-- Database: universidad
+
+-- DROP DATABASE universidad;
+
+CREATE DATABASE universidad
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Spain.1252'
+    LC_CTYPE = 'Spanish_Spain.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+
+
+-- Table: public.estudiantes
+
+-- DROP TABLE public.estudiantes;
+
+CREATE TABLE public.estudiantes
+(
+    id_estudiante integer NOT NULL DEFAULT nextval('estudiantes_id_estudiante_seq'::regclass),
+    nombre character varying(20) COLLATE "default".pg_catalog,
+    apellidos character varying(30) COLLATE "default".pg_catalog,
+    curso character varying(30) COLLATE "default".pg_catalog,
+    anio integer,
+    CONSTRAINT estudiantes_pkey PRIMARY KEY (id_estudiante)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.estudiantes
+    OWNER to postgres;
+
+
+
+
+-- Table: public.muertos
+
+-- DROP TABLE public.muertos;
+
+CREATE TABLE public.muertos
+(
+    id_muerto integer NOT NULL DEFAULT nextval('muertos_id_muerto_seq'::regclass),
+    edad character varying(10) COLLATE "default".pg_catalog,
+    servicio character varying(20) COLLATE "default".pg_catalog,
+    fecha_fallecido character varying(20) COLLATE "default".pg_catalog,
+    resultado character varying(20) COLLATE "default".pg_catalog,
+    fecha_ingreso character varying COLLATE "default".pg_catalog,
+    CONSTRAINT muertos_pkey PRIMARY KEY (id_muerto)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.muertos
+    OWNER to postgres;
